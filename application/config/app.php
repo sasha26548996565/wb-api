@@ -121,6 +121,8 @@ return [
 
     'key' => env('APP_KEY'),
 
+    'api_key' => env('API_KEY'),
+
     'cipher' => 'AES-256-CBC',
 
     /*
@@ -170,6 +172,7 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        App\Providers\ActionServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,

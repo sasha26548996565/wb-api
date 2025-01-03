@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class AuthMiddleware
 {
@@ -18,8 +18,7 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next) : mixed
     {
-        if ($request->key == env('API_KEY')) {
-
+        if ($request->key == config('app.api_key')) {
             return $next($request);
         } else
             throw new HttpResponseException(
