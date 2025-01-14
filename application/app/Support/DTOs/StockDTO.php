@@ -37,6 +37,7 @@ final class StockDTO
     public static function collection(Collection $collection): StockDTO
     {
         return self::make(...$collection->only([
+            'account_id',
             'supplier_article',
             'tech_size',
             'barcode',
