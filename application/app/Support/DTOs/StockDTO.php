@@ -12,6 +12,7 @@ final class StockDTO
     use Makeable;
 
     public function __construct(
+        public readonly ?int $account_id,
         public readonly string $supplier_article,
         public readonly string $tech_size,
         public readonly int $barcode,

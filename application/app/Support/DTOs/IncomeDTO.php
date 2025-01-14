@@ -12,6 +12,7 @@ final class IncomeDTO
     use Makeable;
 
     public function __construct(
+        public readonly ?int $account_id,
         public readonly int $income_id,
         public readonly string $number,
         public readonly string $date,
@@ -29,6 +30,7 @@ final class IncomeDTO
     public static function collection(Collection $collection): IncomeDTO
     {
         return self::make(...$collection->only([
+            'account_id',
             'income_id',
             'number',
             'date',

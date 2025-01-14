@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Account;
 use App\Filters\OrderFilter;
 use Illuminate\Http\Request;
 use App\Support\DTOs\OrderDTO;
@@ -35,8 +36,10 @@ class OrderController extends Controller
             'dateTo' => '2025-01-03'
         ];
         $orders = $this->apiDataService->getData($params);
+        $account = Account::find(1);
 
         foreach ($orders as $order) {
+            $order['account_id'] = $account?->id;
             $storeOrder(OrderDTO::collection(collect($order)));
         }
 

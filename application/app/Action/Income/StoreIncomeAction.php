@@ -19,6 +19,7 @@ class StoreIncomeAction implements StoreIncomeContract
 
         try {
             $income = Income::create([
+                'account_id' => $incomeDTO->account_id,
                 'income_id' => $incomeDTO->income_id,
                 'number' => $incomeDTO->number,
                 'date' => $incomeDTO->date,

@@ -19,6 +19,7 @@ class StoreStockAction implements StoreStockContract
 
         try {
             $stock = Stock::create([
+                'account_id' => $stockDTO->account_id,
                 'supplier_article' => $stockDTO->supplier_article,
                 'tech_size' => $stockDTO->tech_size,
                 'barcode' => $stockDTO->barcode,

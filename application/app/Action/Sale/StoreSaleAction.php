@@ -19,6 +19,7 @@ class StoreSaleAction implements StoreSaleContract
 
         try {
             $sale = Sale::create([
+                'account_id' => $saleDTO->account_id,
                 'g_number' => $saleDTO->g_number,
                 'date' => $saleDTO->date,
                 'last_change_date' => $saleDTO->last_change_date,

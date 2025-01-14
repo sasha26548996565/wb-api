@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Account;
 use App\Filters\StockFilter;
 use Illuminate\Http\Request;
 use App\Support\DTOs\StockDTO;
@@ -36,8 +37,10 @@ class StockController extends Controller
             'dateTo' => ''
         ];
         $stocks = $this->apiDataService->getData($params);
+        $account = Account::find(1);
 
         foreach ($stocks as $stock) {
+            $stock['account_id'] = $account?->id;
             $storeStock(StockDTO::collection(collect($stock)));
         }
 

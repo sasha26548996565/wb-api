@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Filters\IncomeFilter;
 use App\Support\DTOs\IncomeDTO;
@@ -35,8 +36,10 @@ class IncomeController extends Controller
             'dateTo' => '2025-01-03'
         ];
         $incomes = $this->apiDataService->getData($params);
+        $account = Account::find(1);
 
         foreach ($incomes as $income) {
+            $income['account_id'] = $account?->id;
             $storeIncome(IncomeDTO::collection(collect($income)));
         }
 

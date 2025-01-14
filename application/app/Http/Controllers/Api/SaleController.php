@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Account;
 use App\Filters\SaleFilter;
 use Illuminate\Http\Request;
 use App\Support\DTOs\SaleDTO;
@@ -34,8 +35,10 @@ class SaleController extends Controller
             'dateTo' => ''
         ];
         $sales = $this->apiDataService->getData($params);
+        $account = Account::find(1);
 
         foreach ($sales as $sale) {
+            $sale['account_id'] = $account?->id;
             $storeSale(SaleDTO::collection(collect($sale)));
         }
 

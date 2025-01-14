@@ -12,6 +12,7 @@ final class OrderDTO
     use Makeable;
 
     public function __construct(
+        public readonly ?int $account_id,
         public readonly string $g_number,
         public readonly string $date,
         public readonly string $last_change_date,
@@ -35,6 +36,7 @@ final class OrderDTO
     public static function collection(Collection $collection): OrderDTO
     {
         return self::make(...$collection->only([
+            'account_id',
             'g_number',
             'date',
             'last_change_date',

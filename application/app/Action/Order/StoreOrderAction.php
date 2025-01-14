@@ -19,6 +19,7 @@ class StoreOrderAction implements StoreOrderContract
 
         try {
             $order = Order::create([
+                'account_id' => $orderDTO->account_id,
                 'g_number' => $orderDTO->g_number,
                 'date' => $orderDTO->date,
                 'last_change_date' => $orderDTO->last_change_date,
